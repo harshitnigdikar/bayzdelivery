@@ -1,14 +1,14 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/bayzdelivery
-    username: db_user
-    password: 123qwe
+    url: jdbc:postgresql://localhost:6432/bayzdelivery
+    username: postgres
+    password: harshit
     driver-class-name: org.postgresql.Driver
   jpa:
     open-in-view: false
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
 
