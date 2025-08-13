@@ -17,18 +17,19 @@ public class PersonController {
 
   @Autowired
   PersonService personService;
-
-  @PostMapping(path = "/api/person")
+  /* corrected context path /api/person to /person*/
+  @PostMapping(path = "/person")
   public ResponseEntity<Person> register(@RequestBody Person p) {
     return ResponseEntity.ok(personService.save(p));
   }
 
-  @GetMapping(path = "/api/person")
+  @GetMapping(path = "/person")
   public ResponseEntity<List<Person>> getAllPersons() {
     return ResponseEntity.ok(personService.getAll());
   }
 
-  @GetMapping(path = "/api/person/{pers-id}")
+  /* corrected {person-id} path*/
+  @GetMapping(path = "/person/{person-id}")
   public ResponseEntity<Person> getPersonById(@PathVariable(name="person-id", required=true)Long personId) {
     Person person = personService.findById(personId);
     if (person != null) {
