@@ -1,14 +1,17 @@
 package com.bayzdelivery.controller;
 
+import com.bayzdelivery.dto.DeliveryManCommissionDTO;
 import com.bayzdelivery.model.Delivery;
+import com.bayzdelivery.service.DeliveryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.bayzdelivery.service.DeliveryService;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 public class DeliveryController {
@@ -18,6 +21,8 @@ public class DeliveryController {
 
   @PostMapping(path ="/delivery")
   public ResponseEntity<Delivery> createNewDelivery(@RequestBody Delivery delivery) {
+    delivery.setCommission(deliveryService.calculateCommission(delivery));
+    System.out.println(delivery.toString());
     return ResponseEntity.ok(deliveryService.save(delivery));
   }
 
@@ -27,5 +32,13 @@ public class DeliveryController {
     if (delivery !=null)
       return ResponseEntity.ok(delivery);
     return ResponseEntity.notFound().build();
+  }
+
+  @GetMapping("/top-delivery-men")
+  public ResponseEntity<List<DeliveryManCommissionDTO>> getTopDeliveryMen(
+          @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant start,
+          @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant end) {
+
+    return ResponseEntity.ok(deliveryService.getTop3DeliveryMen(start, end));
   }
 }

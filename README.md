@@ -17,7 +17,7 @@ At the end of delivery, delivery man sends a request to the server with his/her 
 ## Tasks:
 1. Codebase contains functional or logical bugs. Find these issues and fix them,
 2. Mobile team asked you for a new API endpoint to display top 3 delivery men who earn the most commission in given time interval, they also want to show average commission as well.
-3. Customer support team wants to be notified when a delivery is not done in 45 minutes. Create the scheduled task to check and notify CS team asynchronously. You are not required to implement notification, you can just print the message.
+3. Customer support team wants to be notified when a delivery is not done in 45 minutes. Create the scheduled task to check and notify CS team asynchronously. You are not required to implement notification, you can just print the message.  
 
 ## Evaluation Criteria:
 - Code quality and Applying Best Practices

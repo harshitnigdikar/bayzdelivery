@@ -36,8 +36,8 @@ public class Delivery implements Serializable{
   @Column(name = "price")
   Long price;
 
-  @Column(name = "comission")
-  Long comission;
+  @Column(name = "commission")
+  Long commission;
 
   @ManyToOne
   @JoinColumn(name = "delivery_man_id", referencedColumnName = "id")
@@ -87,12 +87,12 @@ public class Delivery implements Serializable{
     this.price = price;
   }
 
-  public Long getComission() {
-    return comission;
+  public Long getCommission() {
+    return commission;
   }
 
-  public void setComission(Long comission) {
-    this.comission = comission;
+  public void setCommission(Long commission) {
+    this.commission = commission;
   }
 
   public Person getDeliveryMan() {
